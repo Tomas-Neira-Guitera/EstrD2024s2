@@ -194,3 +194,22 @@ LinkedList copy(LinkedList xs)
     DisposeIterator(li);
     return l;
 }
+
+void Append(LinkedList xs, LinkedList ys){ // se debe resolver con la interfaz y no con los structs...
+    NodoL p = xs->primero;
+    if (p == nullptr)
+    {
+        xs->primero = ys->primero;
+    }
+    else{
+        while (p->siguiente != nullptr)
+        {
+            p = p->siguiente;
+        }
+        p->siguiente = ys->primero;
+    }
+    xs->cantidad += ys->cantidad;
+    delete ys;
+}
+
+
