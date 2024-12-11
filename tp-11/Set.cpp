@@ -15,6 +15,7 @@ Set emptyS(){
     Set s = new SetSt;
     s->cantidad = 0;
     s->primero = NULL;
+    return s;
 }
 
 bool isEmptyS(Set s){
@@ -67,8 +68,20 @@ LinkedList setToList(Set s){
     for (int i = 0; i < s->cantidad; i++)
     {
         Cons(p->elem, l);
+        p = p->siguiente;
     }
     return l;
 }
 
-void DestroyS(Set s);
+void DestroyS(Set s){
+    NodoS* b = s->primero;
+    NodoS* si;
+
+    while (b != NULL)
+    {
+        si = b;
+        b = b->siguiente;
+        delete si;
+    }
+    delete s;
+}
